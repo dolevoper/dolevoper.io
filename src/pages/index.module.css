@@ -1,0 +1,47 @@
+.avatar {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 1rem 0;
+}
+
+.avatar figure {
+    border-radius: 100%;
+    overflow: hidden;
+    width: 20vw;
+    height: 20vw;
+    background-image: url("../images/avatar.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    margin: 0 auto;
+    grid-column-start: 2;
+    grid-column-end: 3;
+}
+
+.avatar p {
+    margin: auto 0;
+    width: 50%;
+    grid-column-start: 3;
+    grid-column-end: 4;
+}
+
+.contact {
+    margin: 1rem 0;
+}
+
+.contact ul {
+    display: flex;
+    list-style: none;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.contact ul li:not(:first-of-type) {
+    margin-left: 1rem;
+}
+
+.contact svg {
+    margin-right: 0.5rem;
+}

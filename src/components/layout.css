@@ -1,0 +1,22 @@
+@import "@fontsource/roboto";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 20px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: rgba(0, 0, 0, 0.7);
+    background: #f3f3f3;
+}
+
+a {
+    color: #435dad;
+    fill: #435dad;
+}

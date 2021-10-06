@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
-    siteUrl: "https://www.yourdomain.tld",
-    title: "dolevoper.io",
+    siteUrl: "https://dolevoper.io",
+    titleTemplate: "%s | Dolevoper"
   },
   plugins: [
     "gatsby-plugin-image",
