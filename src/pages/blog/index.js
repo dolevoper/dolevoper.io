@@ -2,7 +2,7 @@ import * as React from "react";
 import { graphql, Link } from "gatsby";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
-import { container, post, coverImage } from "./index.module.css";
+import { container, post, coverImage } from "./blog.module.css";
 
 const BlogPage = ({ data }) => {
     return (

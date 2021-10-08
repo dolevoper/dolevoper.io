@@ -1,0 +1,21 @@
+.container {
+    width: 60vw;
+    margin: 2rem auto;
+}
+
+.talk {
+    margin: 2rem 0;
+}
+
+.talk:not(:last-child):after {
+    content: "-----";
+    font-size: 2rem;
+    text-align: center;
+    display: block;
+    margin-top: 2rem;
+}
+
+.talk iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
