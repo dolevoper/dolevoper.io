@@ -1,0 +1,16 @@
+.container {
+    width: 40vw;
+    margin: 2rem auto;
+}
+
+.post figure {
+    margin: 1rem 0;
+}
+
+.post figure figcaption {
+    text-align: center;
+}
+
+.hero-image {
+    max-height: 60vh;
+}

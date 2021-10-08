@@ -1,30 +1,38 @@
 import * as React from "react";
+import { MDXProvider } from "@mdx-js/react"
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import ExternalLink from "../../components/externalLink";
+import { container, post, heroImage } from "./post.module.css";
 
 const BlogPostPage = ({ data }) => {
     const { frontmatter, body } = data.mdx;
     const image = getImage(frontmatter.hero_image);
-    
+
     return (
         <Layout title={frontmatter.title}>
-            <h2>{frontmatter.title}</h2>
-            <p>{frontmatter.description}</p>
-            <p>{frontmatter.date}</p>
-            {
-            image &&
-                <figure>
-                    <GatsbyImage image={image} alt={frontmatter.hero_image_alt} />
-                    <figcaption>
-                        Photo by{" "}
-                        <ExternalLink href={frontmatter.hero_image_credit_link}>{frontmatter.hero_image_credit_text}</ExternalLink>
-                    </figcaption>
-                </figure>
-            }
-            <MDXRenderer>{body}</MDXRenderer>
+            <main className={container}>
+                <article className={post}>
+                    <h2>{frontmatter.title}</h2>
+                    <small>{frontmatter.date}</small>
+                    <p>{frontmatter.description}</p>
+                    {
+                        image &&
+                        <figure>
+                            <GatsbyImage image={image} alt={frontmatter.hero_image_alt} className={heroImage} />
+                            <figcaption>
+                                Photo by{" "}
+                                <ExternalLink href={frontmatter.hero_image_credit_link}>{frontmatter.hero_image_credit_text}</ExternalLink>
+                            </figcaption>
+                        </figure>
+                    }
+                    <MDXRenderer>
+                        {body}
+                    </MDXRenderer>
+                </article>
+            </main>
         </Layout>
     );
 };

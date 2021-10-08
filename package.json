@@ -32,8 +32,10 @@
     "gatsby-source-filesystem": "^3.14.0",
     "gatsby-transformer-remark": "^4.11.0",
     "gatsby-transformer-sharp": "^3.14.0",
+    "prism-react-renderer": "^1.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "styled-components": "^5.3.1"
   }
 }
