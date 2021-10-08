@@ -36,6 +36,7 @@ function load() {
   fetchMoviesPromise.then(onMoviesLoaded);
 }
 ```
+<center><small>Code snippet #1</small></center>
 
 In this example, we call the function `fetchMovies` which makes a request to our API in order to get a list of movies to display. Since it is a long operation, it will be done asynchronously in order not to block the javascript's main thread. A Promise is returned from making this call. The Promise is simply an object, we keep the reference to it in the variable `fetchMoviesPromise`.
 
@@ -69,6 +70,7 @@ function load(ticketId) {
   });
 }
 ```
+<center><small>Code snippet #2</small></center>
 
 The code is very verbose and looks like an ugly arrow. Imagine what will happen with a sequence of 5 or more!
 
@@ -92,6 +94,7 @@ const output = input.map(double);
 
 console.log(input, output);
 ```
+<center><small>Code snippet #3</small></center>
 
 The `map` function receives as a parameter what we call a projection function. In code snippet #3 we start by defining our projection function, `double`. `double` receives a number and returns its multiplication by 2.
 
@@ -122,6 +125,7 @@ fetchCurrentUserNamePromise.then(function (userName) {
 	console.log(userName);
 });
 ```
+<center><small>Code snippet #4</small></center>
 
 Let's go over snippet #4 line by line and make sense of it.
 
@@ -144,6 +148,7 @@ const repeat = x => [x, x];
 
 console.log(repeat(1));
 ```
+<center><small>Code snippet #5</small></center>
 
 Looks simple enough, the `repeat` function takes a value and "repeats" it, i.e returns an array containing it twice. The output is of course:
 ```
@@ -167,8 +172,7 @@ const result = input.map(repeat);
 
 console.log(result);
 ```
-
-<br />
+<center><small>Code snippet #6</small></center>
 
 ```
 [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
@@ -192,6 +196,7 @@ const result = input.map(repeat).flat();
 
 console.log(result);
 ```
+<center><small>Code snippet #7</small></center>
 
 The `flat` function returns a new array, which is the result of concatenating all the values inside the original array. Mapping and flattening go so well together, we can do them both at once, using `flatMap`:
 ```javascript
@@ -200,6 +205,7 @@ const result = input.flatMap(repeat);
 
 console.log(result);
 ```
+<center><small>Code snippet #8</small></center>
 
 Code snippets #7 and #8 are equivalent. Both have the same output and as you probably guessed, `flatMap` calls `map` with the provided projection function and then `flat`.
 
@@ -223,6 +229,7 @@ function load(ticketId) {
 	fetchMoviePromise.then(???);
 }
 ```
+<center><small>Code snippet #9</small></center>
 
 Let's summarize what happens in code snippet #9:
 
@@ -256,6 +263,7 @@ function load(ticketId) {
 	});
 }
 ```
+<center><small>Code snippet #10</small></center>
 
 Since we learned `then` is basically the promise's `map` method, you would expect `fetchMoviePromise` to be a promise of a promise. So you might ask "can I get rid of the outer promise like we flattened the array of arrays?".
 
@@ -291,6 +299,7 @@ function load(ticketId) {
 	});
 }
 ```
+<center><small>Code snippet #11</small></center>
 
 While it makes it difficult to understand how `then` really works, you can argue this code snippet tells a better story. "Fetch the ticket by its id, then save its data into a variable and continue by fetching the movie by its id. Then, save the movie's data in a variable."
 

@@ -49,7 +49,10 @@ const components = {
         const className = props.children.props.className || '';
         const matches = className.match(/language-(?<lang>.*)/);
 
-        const Pre = styled.pre`padding: 1rem;`
+        const Pre = styled.pre`
+            padding: 1rem;
+            line-height: 1;
+        `
 
         return (
             <Highlight
