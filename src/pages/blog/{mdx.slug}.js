@@ -1,5 +1,4 @@
 import * as React from "react";
-import { MDXProvider } from "@mdx-js/react"
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";

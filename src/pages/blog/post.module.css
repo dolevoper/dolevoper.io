@@ -1,10 +1,9 @@
 .container {
-    width: 40vw;
-    margin: 2rem auto;
+    margin: 1rem;
 }
 
 .post figure {
-    margin: 1rem 0;
+    margin-top: 1rem;
 }
 
 .post figure figcaption {
@@ -13,4 +12,17 @@
 
 .hero-image {
     max-height: 60vh;
+}
+
+@media (min-width: 76em) {
+    .container {
+        width: 60vw;
+        margin: 1rem auto;
+    }
+}
+
+@media (min-width: 109em) {
+    .container {
+        width: 40vw;
+    }
 }

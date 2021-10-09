@@ -12,7 +12,7 @@ const TalksPage = () => {
                     <article key={i} className={talk}>
                         <h3>{title}</h3>
                         <figure>
-                            <iframe src={url} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src={url} title={title} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </figure>
                         <small>{date}</small>
                     </article>

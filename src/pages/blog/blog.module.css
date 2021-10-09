@@ -1,27 +1,28 @@
 .container {
-    width: 60vw;
-    margin: 2rem auto;
-}
-
-.post {
-    margin: 2rem 0;
+    margin: 1rem;
 }
 
 .post:not(:last-child):after {
     content: "-----";
     font-size: 2rem;
+    font-weight: 100;
     text-align: center;
     display: block;
-    margin-top: 2rem;
 }
 
 .post figure {
-    height: 25vh;
+    aspect-ratio: 19 / 6;
     overflow: hidden;
-    border-radius: 1rem;
-    margin-bottom: 1rem;
+    border-radius: 20px;
 }
 
 .post .cover-image {
     transform: translateY(-50%);
+}
+
+@media (min-width: 67em) {
+    .container {
+        width: 60vw;
+        margin: 1rem auto;
+    }
 }

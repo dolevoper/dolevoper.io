@@ -6,6 +6,7 @@ module.exports = {
     description: "I'm Omer Dolev, a professional programmer, currently working as a software engineer @ Microsoft."
   },
   plugins: [
+    "gatsby-plugin-styled-components",
     "gatsby-plugin-image",
     {
       resolve: "gatsby-plugin-google-analytics",
