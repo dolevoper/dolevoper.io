@@ -10,13 +10,15 @@ import { heading, navBar } from "./layout.module.css";
 
 import "./layout.css";
 
-const SEO = ({ title }) => {
+const Seo = ({ title, description }) => {
     const { site: { siteMetadata } } = useStaticQuery(graphql`
     query {
         site {
             siteMetadata {
                 siteUrl
+                title
                 titleTemplate
+                description
             }
         }
     }
@@ -25,9 +27,15 @@ const SEO = ({ title }) => {
     const url = `${siteMetadata.siteUrl}${window.location.pathname}`;
 
     return (
-        <Helmet title={title} titleTemplate={siteMetadata.titleTemplate}>
+        <Helmet
+            title={title}
+            titleTemplate={siteMetadata.titleTemplate}
+            defaultTitle={siteMetadata.title}
+            htmlAttributes={{ lang: "en" }}>
             <link rel="canonical" href={url} />
             <meta property="og:url" content={url} />
+            <meta property="og:title" content={title ?? siteMetadata.title} />
+            <meta property="description" content={description ?? siteMetadata.description} />
         </Helmet>
     );
 };
@@ -76,10 +84,10 @@ const components = {
     }
 };
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, description, children }) => {
     return (
         <MDXProvider components={components}>
-            <SEO title={title} />
+            <Seo title={title} description={description} />
             <h1 className={heading}>DOLEVOPER</h1>
             <nav className={navBar}>
                 <ul>

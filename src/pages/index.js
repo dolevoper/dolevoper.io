@@ -8,7 +8,7 @@ import { avatar, contact, container } from "./index.module.css";
 
 const IndexPage = () => {
   return (
-    <Layout title="About">
+    <Layout>
       <main className={container}>
         <article className={avatar}>
           <figure></figure>

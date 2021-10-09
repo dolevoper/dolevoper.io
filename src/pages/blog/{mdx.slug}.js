@@ -12,7 +12,7 @@ const BlogPostPage = ({ data }) => {
     const image = getImage(frontmatter.hero_image);
 
     return (
-        <Layout title={frontmatter.title}>
+        <Layout title={frontmatter.title} description={frontmatter.description}>
             <main className={container}>
                 <article className={post}>
                     <h2>{frontmatter.title}</h2>
