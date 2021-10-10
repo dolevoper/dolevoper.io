@@ -12,7 +12,7 @@ import { heading, navBar, hamburger, menuOpen } from "./layout.module.css";
 
 import "./layout.css";
 
-const Seo = ({ title, description, image, type }) => {
+const Seo = ({ title, path, description, image, type }) => {
     const { site: { siteMetadata } } = useStaticQuery(graphql`
     query {
         site {
@@ -27,13 +27,8 @@ const Seo = ({ title, description, image, type }) => {
     }
     `);
 
-    const [url, setUrl] = React.useState(siteMetadata.siteUrl);
-
-    React.useEffect(() => {
-        setUrl(`${siteMetadata.siteUrl}${window.location.pathname}`);
-    }, [siteMetadata.siteUrl]);
-
     const fullTitle = title ? `${title} | Dolevoper` : siteMetadata.title;
+    const url = `${siteMetadata.siteUrl}${path}`;
 
     return (
         <Helmet
@@ -41,7 +36,6 @@ const Seo = ({ title, description, image, type }) => {
             titleTemplate={siteMetadata.titleTemplate}
             defaultTitle={siteMetadata.title}
             htmlAttributes={{ lang: "en" }}>
-            <link rel="canonical" href={url} />
             <meta property="description" content={description ?? siteMetadata.description} />
 
             <meta itemProp="name" content={fullTitle} />
@@ -108,12 +102,12 @@ const components = {
     }
 };
 
-const Layout = ({ title, description, image, type, children }) => {
+const Layout = ({ title, path, description, image, type, children }) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     return (
         <MDXProvider components={components}>
-            <Seo title={title} description={description} image={image} type={type} />
+            <Seo title={title} path={path} description={description} image={image} type={type} />
             <h1 className={heading}>DOLEVOPER</h1>
             <nav className={navBar}>
                 <FontAwesomeIcon icon={faBars} className={hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)} />

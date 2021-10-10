@@ -4,9 +4,9 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image";
 import Layout from "../../components/layout";
 import { container, post, coverImage } from "./blog.module.css";
 
-const BlogPage = ({ data }) => {
+const BlogPage = ({ data, location }) => {
     return (
-        <Layout title="Blog">
+        <Layout title="Blog" path={location.pathname}>
             <main className={container}>
                 <h2>Blog</h2>
                 {data.allMdx.nodes.map(({ id, slug, frontmatter }) => {

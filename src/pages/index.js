@@ -6,9 +6,9 @@ import ExternalLink from "../components/externalLink";
 import Layout from "../components/layout";
 import { avatar, contact, container } from "./index.module.css";
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   return (
-    <Layout>
+    <Layout path={location.pathname}>
       <main className={container}>
         <article className={avatar}>
           <figure></figure>

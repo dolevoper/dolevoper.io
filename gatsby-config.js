@@ -16,6 +16,12 @@ module.exports = {
       },
     },
     "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-canonical-urls",
+      options: {
+        siteUrl: "https://dolevoper.io",
+      },
+    },
     "gatsby-remark-images",
     {
       resolve: "gatsby-plugin-mdx",

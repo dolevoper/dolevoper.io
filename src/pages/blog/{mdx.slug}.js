@@ -6,12 +6,12 @@ import Layout from "../../components/layout";
 import ExternalLink from "../../components/externalLink";
 import { container, post, heroImage } from "./post.module.css";
 
-const BlogPostPage = ({ data }) => {
+const BlogPostPage = ({ data, location }) => {
     const { frontmatter, body } = data.mdx;
     const image = getImage(frontmatter.hero_image);
 
     return (
-        <Layout title={frontmatter.title} description={frontmatter.description} image={frontmatter.hero_image.childImageSharp.fixed.src} type="article">
+        <Layout title={frontmatter.title} path={location.pathname} description={frontmatter.description} image={frontmatter.hero_image.childImageSharp.fixed.src} type="article">
             <main className={container}>
                 <article className={post}>
                     <h2>{frontmatter.title}</h2>

@@ -3,9 +3,9 @@ import Layout from "../components/layout";
 import { container, talk } from "./talks.module.css";
 import talks from "./talks.json";
 
-const TalksPage = () => {
+const TalksPage = ({ location }) => {
     return (
-        <Layout title="Talks">
+        <Layout title="Talks" path={location.pathname}>
             <main className={container}>
                 <h2>Talks</h2>
                 {talks.sort((a, b) => new Date(b.date) - new Date(a.date)).map(({ title, date, url }, i) => (
