@@ -3,7 +3,8 @@ module.exports = {
     siteUrl: "https://dolevoper.io",
     title: "Dolevoper",
     titleTemplate: "%s | Dolevoper",
-    description: "I'm Omer Dolev, a professional programmer, currently working as a software engineer @ Microsoft."
+    description: "I'm Omer Dolev, a professional programmer, currently working as a software engineer @ Microsoft.",
+    image: "/images/avatar.jpg"
   },
   plugins: [
     "gatsby-plugin-styled-components",

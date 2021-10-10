@@ -12,7 +12,7 @@ import { heading, navBar, hamburger, menuOpen } from "./layout.module.css";
 
 import "./layout.css";
 
-const Seo = ({ title, description }) => {
+const Seo = ({ title, description, image, type }) => {
     const { site: { siteMetadata } } = useStaticQuery(graphql`
     query {
         site {
@@ -21,6 +21,7 @@ const Seo = ({ title, description }) => {
                 title
                 titleTemplate
                 description
+                image
             }
         }
     }
@@ -32,6 +33,8 @@ const Seo = ({ title, description }) => {
         setUrl(`${siteMetadata.siteUrl}${window.location.pathname}`);
     }, [siteMetadata.siteUrl]);
 
+    const fullTitle = title ? `${title} | Dolevoper` : siteMetadata.title;
+
     return (
         <Helmet
             title={title}
@@ -39,9 +42,22 @@ const Seo = ({ title, description }) => {
             defaultTitle={siteMetadata.title}
             htmlAttributes={{ lang: "en" }}>
             <link rel="canonical" href={url} />
-            <meta property="og:url" content={url} />
-            <meta property="og:title" content={title ?? siteMetadata.title} />
             <meta property="description" content={description ?? siteMetadata.description} />
+
+            <meta itemProp="name" content={fullTitle} />
+            <meta itemProp="description" content={description ?? siteMetadata.description} />
+            <meta itemProp="image" content={`${siteMetadata.siteUrl}${image ?? siteMetadata.image}`} />
+
+            <meta property="og:url" content={url} />
+            <meta property="og:type" content={type ?? "website"} />
+            <meta property="og:title" content={fullTitle} />
+            <meta property="og:description" content={description ?? siteMetadata.description} />
+            <meta property="og:image" content={`${siteMetadata.siteUrl}${image ?? siteMetadata.image}`} />
+
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={fullTitle} />
+            <meta name="twitter:description" content={description ?? siteMetadata.description} />
+            <meta name="twitter:image" content={`${siteMetadata.siteUrl}${image ?? siteMetadata.image}`} />
         </Helmet>
     );
 };
@@ -92,12 +108,12 @@ const components = {
     }
 };
 
-const Layout = ({ title, description, children }) => {
+const Layout = ({ title, description, image, type, children }) => {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
     return (
         <MDXProvider components={components}>
-            <Seo title={title} description={description} />
+            <Seo title={title} description={description} image={image} type={type} />
             <h1 className={heading}>DOLEVOPER</h1>
             <nav className={navBar}>
                 <FontAwesomeIcon icon={faBars} className={hamburger} onClick={() => setIsMenuOpen(!isMenuOpen)} />

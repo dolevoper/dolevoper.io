@@ -11,7 +11,7 @@ const BlogPostPage = ({ data }) => {
     const image = getImage(frontmatter.hero_image);
 
     return (
-        <Layout title={frontmatter.title} description={frontmatter.description}>
+        <Layout title={frontmatter.title} description={frontmatter.description} image={frontmatter.hero_image.childImageSharp.fixed.src} type="article">
             <main className={container}>
                 <article className={post}>
                     <h2>{frontmatter.title}</h2>
@@ -49,6 +49,9 @@ export const query = graphql`
                 hero_image {
                     childImageSharp {
                         gatsbyImageData
+                        fixed {
+                            src
+                        }
                     }
                 }
             }
