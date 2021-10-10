@@ -36,7 +36,7 @@ const Seo = ({ title, path, description, image, type }) => {
             titleTemplate={siteMetadata.titleTemplate}
             defaultTitle={siteMetadata.title}
             htmlAttributes={{ lang: "en" }}>
-            <meta property="description" content={description ?? siteMetadata.description} />
+            <meta name="description" content={description ?? siteMetadata.description} />
 
             <meta itemProp="name" content={fullTitle} />
             <meta itemProp="description" content={description ?? siteMetadata.description} />
