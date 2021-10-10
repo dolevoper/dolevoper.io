@@ -1,0 +1,13 @@
+name: deploy
+on: [push]
+jobs:
+  deploy-to-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+      - run: npm i
+      - run: npm run build
+      - run: npm run deploy
