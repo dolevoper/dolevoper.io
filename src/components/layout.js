@@ -26,7 +26,11 @@ const Seo = ({ title, description }) => {
     }
     `);
 
-    const url = `${siteMetadata.siteUrl}${window.location.pathname}`;
+    const [url, setUrl] = React.useState(siteMetadata.siteUrl);
+
+    React.useEffect(() => {
+        setUrl(`${siteMetadata.siteUrl}${window.location.pathname}`);
+    }, [siteMetadata.siteUrl]);
 
     return (
         <Helmet
