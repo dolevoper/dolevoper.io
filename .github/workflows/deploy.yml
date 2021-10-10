@@ -13,4 +13,4 @@ jobs:
       - run: git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/dolevoper/dolevoper.github.io.git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: npx gh-pages -d public
+      - run: npx gh-pages -d public -u "github-actions-bot <support+actions@github.com>"
