@@ -1,0 +1,47 @@
+.header {
+  margin-block-start: var(--step-0);
+}
+
+.siteLinks {
+  --horizontal-spacing: var(--step-0);
+  display: flex;
+  gap: var(--horizontal-spacing);
+  width: fit-content;
+  margin-inline: auto;
+  background: var(--color-surface);
+  padding: var(--step--2) var(--horizontal-spacing);
+  border-radius: 12px;
+}
+
+.siteLinks li {
+  display: inline;
+}
+
+.siteLinks li+li::before {
+  content: "/";
+  margin-inline-end: var(--horizontal-spacing);
+  font-weight: 500;
+  color: var(--color-text-accent);
+}
+
+.main {
+  width: min(60ch, 100% - 4rem);
+  margin-inline: auto;
+  margin-block-start: var(--step-2);
+}
+
+.main>*+* {
+  margin-block-start: 1.2em;
+}
+
+.profilePicContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.profilePic {
+  border-radius: 50%;
+  object-fit: cover;
+}
