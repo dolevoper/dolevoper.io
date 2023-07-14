@@ -1,0 +1,9 @@
+.main {
+    width: min(60ch, 100% - 4rem);
+    margin-inline: auto;
+    margin-block-start: var(--step-2);
+}
+
+.main>*+* {
+    margin-block-start: 1.2em;
+}

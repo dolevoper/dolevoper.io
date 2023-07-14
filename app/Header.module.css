@@ -1,0 +1,25 @@
+.header {
+    margin-block-start: var(--step-0);
+}
+
+.siteLinks {
+    --horizontal-spacing: var(--step-0);
+    display: flex;
+    gap: var(--horizontal-spacing);
+    width: fit-content;
+    margin-inline: auto;
+    background: var(--color-surface);
+    padding: var(--step--2) var(--horizontal-spacing);
+    border-radius: 12px;
+}
+
+.siteLinks li {
+    display: inline;
+}
+
+.siteLinks li+li::before {
+    content: "/";
+    margin-inline-end: var(--horizontal-spacing);
+    font-weight: 500;
+    color: var(--color-text-accent);
+}
