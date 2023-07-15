@@ -28,6 +28,6 @@
     font-size: var(--step--1);
 }
 
-.article pre {
+.article code {
     background: var(--color-surface);
 }

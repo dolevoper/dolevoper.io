@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import styles from "./page.module.css";
 import { getPost, getSlugs } from "../posts";
+import Markdown from "./Markdown";
 
 export async function generateStaticParams() {
     const slugs = await getSlugs();
@@ -31,9 +31,9 @@ export default async function Post({ params }: PostProps) {
                 </div>
                 <p className={styles.heroImageCredit}>Photo by <a href={post.heroImage.credit.href}>{post.heroImage.credit.text}</a></p>
             </header>
-            <ReactMarkdown>
+            <Markdown>
                 {post.content}
-            </ReactMarkdown>
+            </Markdown>
         </article>
     )
 }
