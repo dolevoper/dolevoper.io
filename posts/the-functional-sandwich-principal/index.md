@@ -2,7 +2,7 @@
 date: "2020-06-01"
 title: "The Functional Sandwich Principal"
 description: "Start using functional style in your existing code base today, using the “functional sandwich” principle."
-hero_image: "./eiliv-sonas-aceron-mAQZ3X_8_l0-unsplash.jpg"
+hero_image: "/functional-sandwich/hero.jpg"
 hero_image_alt: "Two sandwiches stacked on a black plate with a blurred background"
 hero_image_credit_text: "Eiliv-Sonas Aceron"
 hero_image_credit_link: "https://unsplash.com/photos/mAQZ3X_8_l0"
@@ -72,7 +72,7 @@ function main() {
 
 main();
 ```
-<center><small>Code snippet #1 — some impure functions</small></center>
+Code snippet #1 — some impure functions
 
 Each of the first 3 functions violates one of the restrictions listed above, making them all impure.
 
@@ -107,7 +107,7 @@ function getUsersNames(users) {
   return users.map(getUserName).map(splitFullName);
 }
 ```
-<center><small>Code snippet #2 — some pure functions</small></center>
+Code snippet #2 — some pure functions
 
 Every function here is pure, as they all follow the rules above.
 
@@ -182,7 +182,7 @@ async function main() {
 
 main();
 ```
-<center><small>Code snippet #3 — splitting around side effects</small></center>
+Code snippet #3 — splitting around side effects
 
 We start by moving all the impure parts to the main function, the entry point for our code. We modify functions to accept more inputs where needed, to avoid breaking the second rule (inputs must be explicit).
 
@@ -204,7 +204,8 @@ By splitting the code around side effects and creating more pure functions, the 
 
 Pure functions will always be called and eventually return to an impure function. Covered from both sides by an imperative bread, like a tasty functional sandwich.
 
-![A functional sandwich](./a-functional-sandwich.png)<center><small>A functional sandwich</small></center>
+![A functional sandwich](/functional-sandwich/a-functional-sandwich.png)
+A functional sandwich
 
 If you keep at it, all the side effects will eventually be pushed to the “edges” of the app. As part of the server’s API, or listening to a DOM event.
 

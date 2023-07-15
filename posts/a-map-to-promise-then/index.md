@@ -2,7 +2,7 @@
 date: "2020-04-12"
 title: "A Map To Promise Then"
 description: "A functional approach to promise.then"
-hero_image: "./n-RFId0_7kep4-unsplash.jpg"
+hero_image: "/promise/hero.jpg"
 hero_image_alt: "An old hand drawn map, held by four hands"
 hero_image_credit_text: "N"
 hero_image_credit_link: "https://unsplash.com/photos/RFId0_7kep4"
@@ -36,7 +36,7 @@ function load() {
   fetchMoviesPromise.then(onMoviesLoaded);
 }
 ```
-<center><small>Code snippet #1</small></center>
+Code snippet #1
 
 In this example, we call the function `fetchMovies` which makes a request to our API in order to get a list of movies to display. Since it is a long operation, it will be done asynchronously in order not to block the javascript's main thread. A Promise is returned from making this call. The Promise is simply an object, we keep the reference to it in the variable `fetchMoviesPromise`.
 
@@ -70,11 +70,11 @@ function load(ticketId) {
   });
 }
 ```
-<center><small>Code snippet #2</small></center>
+Code snippet #2
 
 The code is very verbose and looks like an ugly arrow. Imagine what will happen with a sequence of 5 or more!
 
-![6 nested callback functions with a big red arrow pointing at the inner most function's body](./callback_hell.png)
+![6 nested callback functions with a big red arrow pointing at the inner most function's body](/promise/callback_hell.png)
 
 Let's see how using promises will solve this problem.
 
@@ -94,7 +94,7 @@ const output = input.map(double);
 
 console.log(input, output);
 ```
-<center><small>Code snippet #3</small></center>
+Code snippet #3
 
 The `map` function receives as a parameter what we call a projection function. In code snippet #3 we start by defining our projection function, `double`. `double` receives a number and returns its multiplication by 2.
 
@@ -105,7 +105,7 @@ The `map` function receives as a parameter what we call a projection function. I
 
 Let's generalize this idea (without using scary terms like functors or monads). An array is a wrapper to a series of values. The `map` method allows us to take a function meant to be used on a simple value, and run it in the context of that wrapper. The result is a new wrapper of the same type, but with values created by our projection function.
 
-![2 squares representing wrappers of different types T and U and an arrow going from the square representing the T wrapper to the U wrapper labaled: map(T => U)](./map_visualization.png)
+![2 squares representing wrappers of different types T and U and an arrow going from the square representing the T wrapper to the U wrapper labaled: map(T => U)](/promise/map_visualization.png)
 
 #### Array? But you said Promise!
 You might have already guessed it, but there are many types of wrappers besides array. A Promise is one such wrapper.
@@ -125,7 +125,7 @@ fetchCurrentUserNamePromise.then(function (userName) {
 	console.log(userName);
 });
 ```
-<center><small>Code snippet #4</small></center>
+Code snippet #4
 
 Let's go over snippet #4 line by line and make sense of it.
 
@@ -148,7 +148,7 @@ const repeat = x => [x, x];
 
 console.log(repeat(1));
 ```
-<center><small>Code snippet #5</small></center>
+Code snippet #5
 
 Looks simple enough, the `repeat` function takes a value and "repeats" it, i.e returns an array containing it twice. The output is of course:
 ```
@@ -172,7 +172,7 @@ const result = input.map(repeat);
 
 console.log(result);
 ```
-<center><small>Code snippet #6</small></center>
+Code snippet #6
 
 ```
 [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
@@ -196,7 +196,7 @@ const result = input.map(repeat).flat();
 
 console.log(result);
 ```
-<center><small>Code snippet #7</small></center>
+Code snippet #7
 
 The `flat` function returns a new array, which is the result of concatenating all the values inside the original array. Mapping and flattening go so well together, we can do them both at once, using `flatMap`:
 ```javascript
@@ -205,7 +205,7 @@ const result = input.flatMap(repeat);
 
 console.log(result);
 ```
-<center><small>Code snippet #8</small></center>
+Code snippet #8
 
 Code snippets #7 and #8 are equivalent. Both have the same output and as you probably guessed, `flatMap` calls `map` with the provided projection function and then `flat`.
 
@@ -229,7 +229,7 @@ function load(ticketId) {
 	fetchMoviePromise.then(???);
 }
 ```
-<center><small>Code snippet #9</small></center>
+Code snippet #9
 
 Let's summarize what happens in code snippet #9:
 
@@ -263,7 +263,7 @@ function load(ticketId) {
 	});
 }
 ```
-<center><small>Code snippet #10</small></center>
+Code snippet #10
 
 Since we learned `then` is basically the promise's `map` method, you would expect `fetchMoviePromise` to be a promise of a promise. So you might ask "can I get rid of the outer promise like we flattened the array of arrays?".
 
@@ -299,7 +299,7 @@ function load(ticketId) {
 	});
 }
 ```
-<center><small>Code snippet #11</small></center>
+Code snippet #11
 
 While it makes it difficult to understand how `then` really works, you can argue this code snippet tells a better story. "Fetch the ticket by its id, then save its data into a variable and continue by fetching the movie by its id. Then, save the movie's data in a variable."
 

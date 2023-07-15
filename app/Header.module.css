@@ -10,7 +10,7 @@
     margin-inline: auto;
     background: var(--color-surface);
     padding: var(--step--2) var(--horizontal-spacing);
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 .siteLinks li {

@@ -1,0 +1,33 @@
+.heroImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.heroImageWrapper img {
+    object-fit: cover;
+}
+
+.article>*+* {
+    margin-block-start: 1.1em;
+}
+
+.article p:has(img),
+.heroImageWrapper+.heroImageCredit {
+    font-size: var(--step--1);
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 0 0 4px 4px;
+}
+
+.article img {
+    margin-inline: auto;
+}
+
+.article header time {
+    font-size: var(--step--1);
+}
+
+.article pre {
+    background: var(--color-surface);
+}
