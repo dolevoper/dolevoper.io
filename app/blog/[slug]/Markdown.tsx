@@ -1,5 +1,13 @@
+import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
-import SyntaxHighlighter from "./SyntaxHighLighter";
+
+const SyntaxHighlighter = dynamic(() => import("./SyntaxHighLighter"), {
+    ssr: false,
+    loading(loadingProps) {
+        console.log(loadingProps);
+        return <code>Loading code snippet...</code>
+    }
+});
 
 export default function Markdown({ children }: { children: string }) {
     return (

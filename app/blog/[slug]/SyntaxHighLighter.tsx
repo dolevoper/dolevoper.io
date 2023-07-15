@@ -1,8 +1,8 @@
 "use client";
+import { useEffect, useState } from "react";
 import { PrismLight } from "react-syntax-highlighter";
 import { oneLight, oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import javascript from "react-syntax-highlighter/dist/esm/languages/prism/javascript";
-import { useEffect, useState } from "react";
 
 PrismLight.registerLanguage("javascript", javascript);
 
