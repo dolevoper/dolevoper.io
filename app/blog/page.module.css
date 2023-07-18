@@ -1,0 +1,44 @@
+.imageWrapper {
+    position: relative;
+    aspect-ratio: 4/5;
+    aspect-ratio: 16/9;
+}
+
+.imageWrapper>img {
+    object-fit: cover;
+    min-width: 0;
+}
+
+.catalog {
+    display: flex;
+    padding: 0;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: var(--step-0);
+}
+
+.card {
+    --padding: var(--step-0);
+    --border-radius: 4px;
+    flex-basis: calc(50% - var(--step-0) / 2);
+    background: var(--color-surface);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+}
+
+.card > *+* {
+    margin-block-start: 1em;
+}
+
+.card time {
+    display: block;
+}
+
+.card .imageWrapper {
+    margin-inline: calc(-1 * var(--padding));
+    margin-block-start: calc(-1 * var(--padding));
+}
+
+.card img {
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
