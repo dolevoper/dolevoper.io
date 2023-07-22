@@ -26,6 +26,15 @@ export default function SyntaxHighlighter({ language, children }: { language: st
     }, []);
 
     return (
-        <PrismLight language={language} style={theme}>{children}</PrismLight>
+        <PrismLight
+            language={language}
+            showLineNumbers
+            style={{
+                ...theme,
+                "pre[class*=\"language-\"]": {
+                    ...theme["pre[class*=\"language-\"]"],
+                    "padding-inline-start": 0
+                } as any
+            }}>{children}</PrismLight>
     );
 }
