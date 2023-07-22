@@ -1,7 +1,9 @@
+import Main from "@/components/Main";
+
 export default function Talks() {
     return (
-        <div>
+        <Main>
             <h1>Talks</h1>
-        </div>
+        </Main>
     );
 }

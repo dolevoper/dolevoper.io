@@ -2,7 +2,6 @@ import { PropsWithChildren } from "react";
 import type { Metadata } from "next"
 import { Roboto } from "next/font/google"
 import Header from "./Header";
-import Main from "./Main";
 
 import "./globals.css"
 
@@ -20,9 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={roboto.className}>
         <Header />
-        <Main>
-          {children}
-        </Main>
+        {children}
       </body>
     </html>
   );

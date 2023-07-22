@@ -1,5 +1,5 @@
 .main {
-    width: min(65ch, 100% - 4rem);
+    width: min(var(--max-width), 100% - 4rem);
     margin-inline: auto;
     margin-block-start: var(--step-2);
 }
