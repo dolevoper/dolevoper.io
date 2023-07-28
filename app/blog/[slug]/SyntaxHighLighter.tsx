@@ -33,7 +33,7 @@ export default function SyntaxHighlighter({ language, children }: { language: st
                 ...theme,
                 "pre[class*=\"language-\"]": {
                     ...theme["pre[class*=\"language-\"]"],
-                    "padding-inline-start": 0
+                    paddingInlineStart: 0
                 } as any
             }}>{children}</PrismLight>
     );

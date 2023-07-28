@@ -25,7 +25,10 @@ export default async function Blog() {
                                 <Image src={post.heroImage.src} alt={post.heroImage.alt} fill />
                             </Link>
                         </div>
-                        <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+                        <div className={styles.stats}>
+                            <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+                            <span>{post.readingTime.text}</span>
+                        </div>
                         <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
                         <p>{post.description}</p>
                         <Link className={styles.readMore} href={`/blog/${post.slug}`}>Read more</Link>

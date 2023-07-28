@@ -1,6 +1,7 @@
 import { readdir, readFile } from "fs/promises";
 import * as path from "path";
 import matter from "gray-matter";
+import readingTime from "reading-time";
 
 const postsRoot = path.join(process.cwd(), "posts");
 
@@ -25,6 +26,7 @@ export const getPost = async (slug: string) => {
                 href: data.hero_image_credit_link
             }
         },
+        readingTime: readingTime(content),
         content
     };
 };

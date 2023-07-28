@@ -24,10 +24,6 @@
     margin-inline: auto;
 }
 
-.article header time {
-    font-size: var(--step--1);
-}
-
 .article code {
     background: var(--color-surface);
 }
@@ -39,4 +35,16 @@
     .article hr {
         border: 1px solid hsl(0deg 0% 0% / 0.3);
     }
+}
+
+.stats {
+    --gap: var(--step--2);
+    font-size: var(--step--1);
+    display: flex;
+    gap: var(--gap);
+}
+
+.stats > *+*::before {
+    content: "·";
+    margin-inline-end: var(--gap);
 }

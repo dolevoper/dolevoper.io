@@ -21,7 +21,10 @@ export default async function Post({ params }: PostProps) {
             <article className={styles.article}>
                 <header>
                     <h1>{post.title}</h1>
-                    <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+                    <div className={styles.stats}>
+                        <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+                        <span>{post.readingTime.text}</span>
+                    </div>
                     <p>{post.description}</p>
                     <div className={styles.heroImageWrapper}>
                         <Image
