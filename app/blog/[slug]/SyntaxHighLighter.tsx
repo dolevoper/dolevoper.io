@@ -31,13 +31,7 @@ export default function SyntaxHighlighter({ language, label, children }: SyntaxH
                 id={preId}
                 aria-labelledby={labelId}
                 data-lang={language}
-                style={{
-                    ...theme,
-                    "pre[class*=\"language-\"]": {
-                        ...theme["pre[class*=\"language-\"]"],
-                        paddingInlineStart: 0
-                    } as any
-                }}>{children}</PrismLight>
+                style={theme}>{children}</PrismLight>
             <button onClick={onCopy}>{copyText}</button>
             {label ? <label htmlFor={preId}>{label}</label> : undefined}
         </>
@@ -94,5 +88,17 @@ function useSyntaxHighlighter(code: string) {
             ? "Copied!"
             : "Copying...";
 
-    return { theme, preId, labelId, onCopy, copyText };
+    return {
+        theme: {
+            ...theme,
+            "pre[class*=\"language-\"]": {
+                ...theme["pre[class*=\"language-\"]"],
+                paddingInlineStart: 0
+            } as any
+        },
+        preId,
+        labelId,
+        onCopy,
+        copyText
+    };
 }
