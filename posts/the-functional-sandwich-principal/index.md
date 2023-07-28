@@ -37,7 +37,7 @@ Pure functions are the fundamental building block of functional programming. The
 
 To better understand, let’s see a simple example of functions breaking the rules above.
 
-```javascript
+```javascript [Code snippet #1 — some impure functions]
 function dayOfWeek() {
   return [
     'Monday',
@@ -72,7 +72,6 @@ function main() {
 
 main();
 ```
-Code snippet #1 — some impure functions
 
 Each of the first 3 functions violates one of the restrictions listed above, making them all impure.
 
@@ -89,7 +88,7 @@ The last function, main, is automatically ruled out since it’s calling impure 
 
 On the other hand, let’s look at this code:
 
-```javascript
+```javascript [Code snippet #2 — some pure functions]
 function getUserName(user) {
   return user.name;
 }
@@ -107,7 +106,6 @@ function getUsersNames(users) {
   return users.map(getUserName).map(splitFullName);
 }
 ```
-Code snippet #2 — some pure functions
 
 Every function here is pure, as they all follow the rules above.
 
@@ -142,7 +140,7 @@ A simple strategy to increase the number of pure functions in our code is splitt
 
 Let’s refactor the example from code snippet #1 by splitting it around side effects:
 
-```javascript
+```javascript [Code snippet #3 — splitting around side effects]
 function dayOfWeek(date) {
   return [
     'Monday',
@@ -182,7 +180,6 @@ async function main() {
 
 main();
 ```
-Code snippet #3 — splitting around side effects
 
 We start by moving all the impure parts to the main function, the entry point for our code. We modify functions to accept more inputs where needed, to avoid breaking the second rule (inputs must be explicit).
 

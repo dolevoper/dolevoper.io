@@ -19,7 +19,7 @@ We will begin with the assumption that you already know what Promises are and yo
 
 ### Registering a Callback
 The first thing we will learn about the `then` method, is that it is a way of registering a callback (function) to execute once the promise is resolved:
-```javascript
+```javascript [Code snippet #1]
 let showSpinner = false;
 let movies = [];
 
@@ -36,7 +36,6 @@ function load() {
   fetchMoviesPromise.then(onMoviesLoaded);
 }
 ```
-Code snippet #1
 
 In this example, we call the function `fetchMovies` which makes a request to our API in order to get a list of movies to display. Since it is a long operation, it will be done asynchronously in order not to block the javascript's main thread. A Promise is returned from making this call. The Promise is simply an object, we keep the reference to it in the variable `fetchMoviesPromise`.
 
@@ -56,7 +55,7 @@ It is a two steps process:
 2. We will use the `movieId` in the ticket's properties to query the movies API to show more details about the movie.
 
 A naive implementation using Promises would like something like this:
-```javascript
+```javascript [Code snippet #2]
 let ticketData = {};
 let movieData = {};
 
@@ -70,7 +69,6 @@ function load(ticketId) {
   });
 }
 ```
-Code snippet #2
 
 The code is very verbose and looks like an ugly arrow. Imagine what will happen with a sequence of 5 or more!
 
@@ -86,7 +84,7 @@ I'm going to layout a different way to think about the `then` method. I will exp
 I propose to think of the `then` method, as the promise's `map` method.
 
 To understand what I mean, let's look at how `map` works with a more familiar construct:
-```javascript
+```javascript [Code snippet #3]
 const double = x => x * 2;
 const input = [1, 2, 3, 4, 5];
 
@@ -94,7 +92,6 @@ const output = input.map(double);
 
 console.log(input, output);
 ```
-Code snippet #3
 
 The `map` function receives as a parameter what we call a projection function. In code snippet #3 we start by defining our projection function, `double`. `double` receives a number and returns its multiplication by 2.
 
@@ -111,7 +108,7 @@ Let's generalize this idea (without using scary terms like functors or monads). 
 You might have already guessed it, but there are many types of wrappers besides array. A Promise is one such wrapper.
 
 A Promise is a bit special since it doesn't have a proper `map` method. Rather its `then` method behaves much like the `map` method. Let's see it in practice:
-```javascript
+```javascript [Code snippet #4]
 const getUserName = user => user.name;
 
 const fetchCurrentUserPromise = fetchCurrentUser();
@@ -125,7 +122,6 @@ fetchCurrentUserNamePromise.then(function (userName) {
 	console.log(userName);
 });
 ```
-Code snippet #4
 
 Let's go over snippet #4 line by line and make sense of it.
 
@@ -143,12 +139,11 @@ Though pretty cool, you're probably still wondering how does this solve our prob
 
 ### Then as a Flat Map
 Let's look at the following function:
-```javascript
+```javascript [Code snippet #5]
 const repeat = x => [x, x];
 
 console.log(repeat(1));
 ```
-Code snippet #5
 
 Looks simple enough, the `repeat` function takes a value and "repeats" it, i.e returns an array containing it twice. The output is of course:
 ```
@@ -166,13 +161,12 @@ I would expect the following output:
 ```
 
 Obviously just passing an array to this function would not return the desired output… However, `repeat` does look like a projection function! When we pass it to `map` we almost get what we're looking for:
-```javascript
+```javascript [Code snippet #6]
 const input = [1, 2, 3, 4, 5];
 const result = input.map(repeat);
 
 console.log(result);
 ```
-Code snippet #6
 
 ```
 [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]]
@@ -190,29 +184,27 @@ console.log([
 ```
 
 We could also write a general utility function to concat array of arrays, but it turns out we don't have to! This is called flattening and all we have to do is call the `flat` function to do it:
-```javascript
+```javascript [Code snippet #7]
 const input = [1, 2, 3, 4, 5];
 const result = input.map(repeat).flat();
 
 console.log(result);
 ```
-Code snippet #7
 
 The `flat` function returns a new array, which is the result of concatenating all the values inside the original array. Mapping and flattening go so well together, we can do them both at once, using `flatMap`:
-```javascript
+```javascript [Code snippet #8]
 const input = [1, 2, 3, 4, 5];
 const result = input.flatMap(repeat);
 
 console.log(result);
 ```
-Code snippet #8
 
 Code snippets #7 and #8 are equivalent. Both have the same output and as you probably guessed, `flatMap` calls `map` with the provided projection function and then `flat`.
 
 Flattening basically means getting rid of the outer wrapper. It is worth noting that flattening works only when the inner and outer wrappers' types are the same. We can't flatten an array of promises for example.
 
 Now we should have all the tools to solve our original problem, loading a ticket by id and then loading the movie related to said ticket:
-```javascript
+```javascript [Code snippet #9]
 let ticketData = {};
 let movieData = {};
 
@@ -229,7 +221,6 @@ function load(ticketId) {
 	fetchMoviePromise.then(???);
 }
 ```
-Code snippet #9
 
 Let's summarize what happens in code snippet #9:
 
@@ -244,7 +235,7 @@ Let's summarize what happens in code snippet #9:
 It turns out, it isn't!
 
 `fetchMoviePromise` is actually just a promise of the response from the call to the movies API. The complete code snippet looks like this:
-```javascript
+```javascript [Code snippet #10]
 let ticketData = {};
 let movieData = {};
 
@@ -263,7 +254,6 @@ function load(ticketId) {
 	});
 }
 ```
-Code snippet #10
 
 Since we learned `then` is basically the promise's `map` method, you would expect `fetchMoviePromise` to be a promise of a promise. So you might ask "can I get rid of the outer promise like we flattened the array of arrays?".
 
@@ -285,7 +275,7 @@ asyncFuncA()
 In code snippet #10, every call to `then` had one job only. In line 7 it is used as `map`, in line 8 as `flatMap` and in lines 10 and 14 as a way to register a callback. I find assigning 1 behavior to every call to `then` very clear, especially when learning like we do here.
 
 More often than not, you'll see different behaviors of `then` mixed into one call. The same code written in snippet #10 could be written as follows:
-```javascript
+```javascript [Code snippet #11]
 let ticketData = {};
 let movieData = {};
 
@@ -299,7 +289,6 @@ function load(ticketId) {
 	});
 }
 ```
-Code snippet #11
 
 While it makes it difficult to understand how `then` really works, you can argue this code snippet tells a better story. "Fetch the ticket by its id, then save its data into a variable and continue by fetching the movie by its id. Then, save the movie's data in a variable."
 

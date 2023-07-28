@@ -15,9 +15,15 @@ export default function Markdown({ children }: { children: string }) {
             code({ node, inline, className, children, ...props }) {
                 const hasLang = /language-(\w+)/.exec(className ?? "");
 
-                return hasLang ?
-                    <SyntaxHighlighter language={hasLang[1]}>{children as string | string[]}</SyntaxHighlighter> :
-                    <code className={className} {...props}>{children}</code>
+                if (!hasLang) {
+                    return <code className={className} {...props}>{children}</code>;
+                }
+
+                const meta = node.data?.meta as string | undefined;
+                const label = meta ? /\[(.*)\]/.exec(meta) : null;
+
+                return <SyntaxHighlighter language={hasLang[1]} label={label?.[1]}>{children as string | string[]}</SyntaxHighlighter>;
+
             }
         }}>
             {children}
