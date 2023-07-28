@@ -23,7 +23,6 @@ export default function Markdown({ children }: { children: string }) {
                 const hasLabel = meta ? /\[(.*)\]/.exec(meta) : null;
 
                 return <SyntaxHighlighter language={hasLang[1]} label={hasLabel?.[1]}>{children as string | string[]}</SyntaxHighlighter>;
-
             }
         }}>
             {children}

@@ -55,6 +55,19 @@
     font-weight: 600;
 }
 
+.article pre:has([data-lang]) button {
+    position: absolute;
+    right: var(--step--2);
+    bottom: 4rem;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    background: var(--color-surface);
+    border: 1px solid var(--color-text);
+    border-radius: 8px;
+    width: 7em;
+    font-size: var(--step--1);
+}
+
 .stats {
     --gap: var(--step--2);
     font-size: var(--step--1);

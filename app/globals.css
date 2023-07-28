@@ -88,3 +88,10 @@ ul,
 li {
   padding: 0;
 }
+
+button {
+  font-size: inherit;
+  font-family: inherit;
+  appearance: none;
+  padding: 0;
+}
