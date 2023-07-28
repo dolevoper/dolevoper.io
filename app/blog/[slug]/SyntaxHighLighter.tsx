@@ -41,6 +41,7 @@ export default function SyntaxHighlighter({ language, label, children }: SyntaxH
                 showLineNumbers
                 id={preId}
                 aria-labelledby={labelId}
+                data-lang={language}
                 style={{
                     ...theme,
                     "pre[class*=\"language-\"]": {

@@ -20,9 +20,9 @@ export default function Markdown({ children }: { children: string }) {
                 }
 
                 const meta = node.data?.meta as string | undefined;
-                const label = meta ? /\[(.*)\]/.exec(meta) : null;
+                const hasLabel = meta ? /\[(.*)\]/.exec(meta) : null;
 
-                return <SyntaxHighlighter language={hasLang[1]} label={label?.[1]}>{children as string | string[]}</SyntaxHighlighter>;
+                return <SyntaxHighlighter language={hasLang[1]} label={hasLabel?.[1]}>{children as string | string[]}</SyntaxHighlighter>;
 
             }
         }}>

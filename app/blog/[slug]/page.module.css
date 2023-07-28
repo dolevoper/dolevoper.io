@@ -27,6 +27,7 @@
 .article code {
     background: var(--color-surface);
 }
+
 .article hr {
     border: 1px solid hsl(0deg 100% 100% / 0.3);
 }
@@ -35,6 +36,23 @@
     .article hr {
         border: 1px solid hsl(0deg 0% 0% / 0.3);
     }
+}
+
+.article pre:has([data-lang]) {
+    position: relative;
+}
+
+.article [data-lang]::before {
+    content: attr(data-lang);
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: yellow;
+    color: black;
+    padding: 0 var(--step--2);
+    text-transform: uppercase;
+    border-radius: 0 0.3em 0 0.3em;
+    font-weight: 600;
 }
 
 .stats {
