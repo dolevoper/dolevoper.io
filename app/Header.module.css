@@ -5,21 +5,32 @@
 .siteLinks {
     --horizontal-spacing: var(--step-0);
     display: flex;
+    list-style: none;
     gap: var(--horizontal-spacing);
     width: fit-content;
     margin-inline: auto;
     background: var(--color-surface);
-    padding: var(--step--2) var(--horizontal-spacing);
     border-radius: 8px;
+    overflow: hidden;
 }
 
 .siteLinks li {
-    display: inline;
+    display: flex;
+    align-items: baseline;
+    gap: var(--horizontal-spacing);
 }
 
 .siteLinks li+li::before {
     content: "/";
-    margin-inline-end: var(--horizontal-spacing);
     font-weight: 500;
+    color: var(--color-text-accent);
+}
+
+.siteLinks a {
+    padding: var(--step--2) var(--horizontal-spacing);
+}
+
+.siteLinks a[data-active] {
+    background: var(--color-primary);
     color: var(--color-text-accent);
 }

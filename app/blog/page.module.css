@@ -4,11 +4,11 @@
 }
 
 .catalog {
+    --template-rows: auto auto auto 1fr auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
-    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-rows: var(--template-rows);
     padding: 0;
-    flex-wrap: wrap;
     list-style: none;
     gap: var(--step-0);
 }
@@ -16,14 +16,13 @@
 .card {
     --padding: var(--step-0);
     --border-radius: 4px;
-    grid-row: span 5;
+    grid-row: span 4;
     display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-rows: var(--template-rows);
     grid-template-rows: subgrid;
     background: var(--color-surface);
     padding: var(--padding);
     border-radius: var(--border-radius);
-    height: 650px;
 }
 
 .card > *+* {

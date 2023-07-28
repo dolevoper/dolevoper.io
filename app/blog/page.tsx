@@ -19,19 +19,17 @@ export default async function Blog() {
             </header>
             <ol className={styles.catalog}>
                 {posts.map((post) => (
-                    <>
-                        <li key={post.slug} className={styles.card}>
-                            <div className={styles.imageWrapper}>
-                                <Link className={styles.readMore} href={`/blog/${post.slug}`}>
-                                    <Image src={post.heroImage.src} alt={post.heroImage.alt} fill />
-                                </Link>
-                            </div>
-                            <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
-                            <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
-                            <p>{post.description}</p>
-                            <Link className={styles.readMore} href={`/blog/${post.slug}`}>Read more</Link>
-                        </li>
-                    </>
+                    <li key={post.slug} className={styles.card}>
+                        <div className={styles.imageWrapper}>
+                            <Link className={styles.readMore} href={`/blog/${post.slug}`}>
+                                <Image src={post.heroImage.src} alt={post.heroImage.alt} fill />
+                            </Link>
+                        </div>
+                        <time dateTime={post.date.toISOString()}>{post.date.toDateString()}</time>
+                        <h2><Link href={`/blog/${post.slug}`}>{post.title}</Link></h2>
+                        <p>{post.description}</p>
+                        <Link className={styles.readMore} href={`/blog/${post.slug}`}>Read more</Link>
+                    </li>
                 ))}
             </ol>
         </Main>
