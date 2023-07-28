@@ -1,11 +1,22 @@
 import { PropsWithChildren } from "react";
 import type { Metadata } from "next"
-import { Roboto } from "next/font/google"
+import { Oswald, Lora } from "next/font/google"
 import Header from "./Header";
 
 import "./globals.css"
 
-const roboto = Roboto({ subsets: ["latin"], weight: ["400", "500", "700"], fallback: ["Arial", "sans-serif"] });
+const oswald = Oswald({
+  variable: "--font-headings",
+  subsets: ["latin"],
+  weight: ["500", "700"],
+  fallback: ["Arial", "sans-serif"]
+});
+const lora = Lora({
+  variable: "--font-text",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  fallback: ["Times New Roman", "serif"]
+});
 
 export const metadata: Metadata = {
   title: "Dolevoper",
@@ -17,7 +28,7 @@ export default function RootLayout({
 }: PropsWithChildren) {
   return (
     <html lang="en">
-      <body className={roboto.className}>
+      <body className={`${oswald.variable} ${lora.variable}`}>
         <Header />
         {children}
       </body>
