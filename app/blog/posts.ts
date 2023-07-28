@@ -7,10 +7,10 @@ const postsRoot = path.join(process.cwd(), "posts");
 
 export type Post = Awaited<ReturnType<typeof getPost>>;
 
-export const getSlugs = () => readdir(postsRoot);
+export const getSlugs = () => readdir(postsRoot).then((filenames) => filenames.map((filename) => filename.slice(0, -".md".length)));
 
 export const getPost = async (slug: string) => {
-    const post = await readFile(path.join(postsRoot, slug, "index.md"), "utf-8");
+    const post = await readFile(path.join(postsRoot, `${slug}.md`), "utf-8");
     const { data, content } = matter(post);
 
     return {
