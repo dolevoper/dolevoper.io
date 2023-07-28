@@ -47,7 +47,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    background: yellow;
+    background: #f7e018;
     color: black;
     padding: 0 var(--step--2);
     text-transform: uppercase;
