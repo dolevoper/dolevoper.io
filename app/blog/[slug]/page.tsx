@@ -3,6 +3,7 @@ import Main from "@/components/Main";
 import styles from "./page.module.css";
 import { getPost, getSlugs } from "../posts";
 import Markdown from "./Markdown";
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
     const slugs = await getSlugs();
@@ -13,6 +14,29 @@ export async function generateStaticParams() {
 type PostProps = {
     params: { slug: string }
 };
+
+export async function generateMetadata({ params }: PostProps): Promise<Metadata> {
+    const post = await getPost(params.slug);
+    const title = `Dolevoper - ${post.title}`;
+
+    return {
+        title,
+        description: post.description,
+        openGraph: {
+            type: "article",
+            description: post.description,
+            title,
+            images: post.heroImage.src
+        },
+        twitter: {
+            card: "summary_large_image",
+            title,
+            description: post.description,
+            images: post.heroImage.src
+        }
+    };
+}
+
 export default async function Post({ params }: PostProps) {
     const post = await getPost(params.slug);
 
