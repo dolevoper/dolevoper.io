@@ -2,14 +2,15 @@ import { readdir, readFile } from "fs/promises";
 import * as path from "path";
 import matter from "gray-matter";
 import readingTime from "reading-time";
+import { cache } from "react";
 
 const postsRoot = path.join(process.cwd(), "posts");
 
 export type Post = Awaited<ReturnType<typeof getPost>>;
 
-export const getSlugs = () => readdir(postsRoot).then((filenames) => filenames.map((filename) => filename.slice(0, -".md".length)));
+export const getSlugs = cache(() => readdir(postsRoot).then((filenames) => filenames.map((filename) => filename.slice(0, -".md".length))));
 
-export const getPost = async (slug: string) => {
+export const getPost = cache(async (slug: string) => {
     const post = await readFile(path.join(postsRoot, `${slug}.md`), "utf-8");
     const { data, content } = matter(post);
 
@@ -29,4 +30,18 @@ export const getPost = async (slug: string) => {
         readingTime: readingTime(content),
         content
     };
-};
+});
+
+export const getSiblings = cache(async (slug: string) => {
+    const slugs = await getSlugs();
+    const posts = await Promise.all(slugs.map(getPost));
+
+    posts.sort((a, b) => (+a.date) - (+b.date));
+
+    const postIndex = posts.findIndex((post) => post.slug === slug);
+
+    return {
+        previous: posts[postIndex - 1] as Post | undefined,
+        next: posts[postIndex + 1] as Post | undefined
+    };
+});
