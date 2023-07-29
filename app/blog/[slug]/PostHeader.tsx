@@ -1,6 +1,7 @@
 import Image from "next/image";
-import styles from "./page.module.css";
 import { getPost } from "../posts";
+
+import styles from "./PostHeader.module.css";
 
 type PostHeaderProps = {
     slug: string

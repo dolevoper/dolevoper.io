@@ -1,19 +1,8 @@
-.heroImageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/9;
-}
-
-.heroImageWrapper img {
-    object-fit: cover;
-}
-
 .article>*+* {
     margin-block-start: 1.1em;
 }
 
-.article p:has(img),
-.heroImageWrapper+.heroImageCredit {
+.article p:has(img) {
     font-size: var(--step--1);
     text-align: center;
     background: var(--color-surface);
@@ -66,16 +55,4 @@
     border-radius: 8px;
     width: 7em;
     font-size: var(--step--1);
-}
-
-.stats {
-    --gap: var(--step--2);
-    font-size: var(--step--1);
-    display: flex;
-    gap: var(--gap);
-}
-
-.stats > *+*::before {
-    content: "·";
-    margin-inline-end: var(--gap);
 }

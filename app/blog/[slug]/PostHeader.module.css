@@ -1,0 +1,28 @@
+.heroImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.heroImageWrapper img {
+    object-fit: cover;
+}
+
+.heroImageWrapper+.heroImageCredit {
+    font-size: var(--step--1);
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 0 0 4px 4px;
+}
+
+.stats {
+    --gap: var(--step--2);
+    font-size: var(--step--1);
+    display: flex;
+    gap: var(--gap);
+}
+
+.stats > *+*::before {
+    content: "·";
+    margin-inline-end: var(--gap);
+}
