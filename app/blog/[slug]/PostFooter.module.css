@@ -1,0 +1,14 @@
+.footer {
+    margin-block: var(--step-5);
+}
+
+.navLinks {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--step-0);
+}
+
+.backToTop {
+    grid-column-start: 2;
+}
