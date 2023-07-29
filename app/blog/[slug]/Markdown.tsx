@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
+import ExternalLink from "./ExternalLink";
 
 const SyntaxHighlighter = dynamic(() => import("./SyntaxHighLighter"), {
     ssr: false,
@@ -12,6 +13,7 @@ const SyntaxHighlighter = dynamic(() => import("./SyntaxHighLighter"), {
 export default function Markdown({ children }: { children: string }) {
     return (
         <ReactMarkdown components={{
+            a: ExternalLink,
             code({ node, inline, className, children, ...props }) {
                 const hasLang = /language-(\w+)/.exec(className ?? "");
 
