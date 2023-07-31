@@ -15,6 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
+  margin-block: var(--step-3);
 }
 
 .links a {

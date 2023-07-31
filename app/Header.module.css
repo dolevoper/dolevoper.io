@@ -1,4 +1,4 @@
-.header {
+/* .header {
     margin-block-start: var(--step-0);
 }
 
@@ -34,4 +34,63 @@
 .siteLinks a[data-active] {
     background: var(--color-primary);
     color: var(--color-text-accent);
+}
+*/ .visuallyHidden {
+    display: inline-block;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1;
+    width: 1;
+    margin: -1;
+    padding: 0;
+    border: 0;
+}
+
+.header {
+    position: sticky;
+    top: 0;
+    isolation: isolate;
+    z-index: 1;
+    background: var(--color-surface);
+    font-size: var(--step-3);
+}
+
+.header label {
+    display: block;
+    padding: var(--step--2) var(--step-0);
+    position: relative;
+}
+
+.header input,
+.header nav {
+    display: none;
+}
+
+.header input:checked+nav {
+    display: block;
+}
+
+.header label {
+    cursor: pointer;
+}
+
+.siteLinks {
+    list-style: none;
+    font-family: var(--font-headings);
+    position: absolute;
+    background: var(--color-surface-opaque);
+    width: 100%;
+}
+
+.siteLinks a {
+    display: block;
+    padding: var(--step--2) var(--step-0);
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background: black;
+    opacity: 0.3;
 }
