@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import type { Metadata } from "next"
 import { Oswald, Lora } from "next/font/google"
 import Header from "./Header";
+import { description } from "./page";
 
 import "./globals.css"
 
@@ -20,7 +21,7 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: "Dolevoper",
-  description: "I'm Omer Dolev, a professional software developer.",
+  description,
 }
 
 export default function RootLayout({

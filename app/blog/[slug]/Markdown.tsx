@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import ReactMarkdown from "react-markdown";
-import ExternalLink from "./ExternalLink";
+import ExternalLink from "@/components/ExternalLink";
 
 const SyntaxHighlighter = dynamic(() => import("./SyntaxHighLighter"), {
     ssr: false,

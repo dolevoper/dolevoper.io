@@ -9,3 +9,18 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.links {
+  --gap: var(--step-0);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+}
+
+.links a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: calc(var(--max-width) / 3 - var(--gap));
+}
+
